@@ -1,96 +1,96 @@
 # KJ.Tourify
 
-Tur ve seyahat şirketleri için geliştirilmiş, **ASP.NET Core MVC** tabanlı bir web sitesi. Site içeriğinin tamamı (sayfa metinleri, turlar, şehirler, galeri, yorumlar) yönetim paneli üzerinden düzenlenebilir.
+A web application for tour and travel companies, built with **ASP.NET Core MVC**. All site content (page texts, tours, cities, gallery, testimonials) can be managed through an admin panel.
 
-## Özellikler
+## Features
 
-**Ziyaretçi tarafı**
-- Ana sayfa, Hakkımızda, Hizmetler, Rehberler ve İletişim sayfaları
-- Tur listesi; şehir ve kişi sayısına göre filtreleme
-- Tur detay sayfası ve müşteri yorumları
-- Ziyaretçilerin profil fotoğraflı yorum bırakabilmesi
-- Kategorilere ayrılmış fotoğraf galerisi
-- Rezervasyon sayfası
-- SMTP üzerinden e-posta gönderen iletişim formu
+**Public site**
+- Home, About, Services, Guides and Contact pages
+- Tour listing with filtering by city and number of guests
+- Tour detail page with customer testimonials
+- Visitors can leave testimonials with a profile photo
+- Photo gallery organized by categories
+- Booking page
+- Contact form that sends email via SMTP
 
-**Yönetim paneli (`/Management`)**
-- Cookie tabanlı oturum açma
-- Tüm sayfa içeriklerinin düzenlenmesi
-- Tur, şehir, galeri kategorisi, galeri öğesi ve yorum yönetimi (ekle / güncelle / sil)
-- Görsel yükleme
+**Admin panel (`/Management`)**
+- Cookie-based authentication
+- Editing of all page contents
+- Management of tours, cities, gallery categories, gallery items and testimonials (create / update / delete)
+- Image uploads
 
-## Kullanılan Teknolojiler
+## Tech Stack
 
 - .NET 10, ASP.NET Core MVC
 - Entity Framework Core 10 (SQL Server)
 - Cookie Authentication
-- Razor View'lar ve View Component'ler
+- Razor Views and View Components
 - Bootstrap, jQuery, Owl Carousel, Lightbox
 
-## Proje Yapısı
+## Project Structure
 
 ```
 KJ.Tourify.WebUI/
-├── Areas/Management/   # Yönetim paneli (controller ve view'lar)
-├── Controllers/        # Ziyaretçi sayfaları
+├── Areas/Management/   # Admin panel (controllers and views)
+├── Controllers/        # Public pages
 ├── Models/
-│   ├── Entities/       # Veritabanı tabloları
+│   ├── Entities/       # Database tables
 │   └── ViewModels/
-├── Migrations/         # EF Core migration'ları
+├── Migrations/         # EF Core migrations
 ├── ViewComponents/
-├── Utils/              # Dosya yükleme ve yardımcı sınıflar
+├── Utils/              # File upload and helper classes
 ├── Views/
-└── wwwroot/            # CSS, JS, görseller ve yüklenen dosyalar
-_db/                    # Yardımcı SQL betikleri
+└── wwwroot/            # CSS, JS, images and uploaded files
+_db/                    # Helper SQL scripts
 ```
 
-## Kurulum
+## Getting Started
 
-### Gereksinimler
+### Prerequisites
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
-- SQL Server (Express veya LocalDB yeterli)
+- SQL Server (Express or LocalDB is enough)
 
-### 1. Projeyi klonla
+### 1. Clone the repository
 ```bash
 git clone https://github.com/Kayajan07/KJ.Tourify.git
 cd KJ.Tourify/KJ.Tourify.WebUI
 ```
 
-### 2. Ayarları gir
-`appsettings.json` dosyasında yalnızca örnek değerler bulunur. Gerçek bağlantı ve SMTP bilgilerini **user-secrets** ile gir, böylece bu bilgiler repoya girmez:
+### 2. Configure settings
+`appsettings.json` only contains placeholder values. Set your real connection string and SMTP credentials with **user-secrets** so they never end up in the repository:
 
 ```bash
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=.\SQLEXPRESS;Database=TourifyDb;Trusted_Connection=True;Encrypt=False;"
-dotnet user-secrets set "Smtp:Host" "mail.alanadiniz.com"
+dotnet user-secrets set "Smtp:Host" "mail.yourdomain.com"
 dotnet user-secrets set "Smtp:Port" "587"
-dotnet user-secrets set "Smtp:Email" "iletisim@alanadiniz.com"
-dotnet user-secrets set "Smtp:Password" "SMTP_ŞİFRENİZ"
+dotnet user-secrets set "Smtp:Email" "contact@yourdomain.com"
+dotnet user-secrets set "Smtp:Password" "YOUR_SMTP_PASSWORD"
 ```
 
-Sunucuda ortam değişkenleri de kullanılabilir (örneğin `ConnectionStrings__DefaultConnection`, `Smtp__Password`).
+On a server you can use environment variables instead (e.g. `ConnectionStrings__DefaultConnection`, `Smtp__Password`).
 
-### 3. Veritabanını oluştur
+### 3. Create the database
 ```bash
-dotnet tool install --global dotnet-ef   # yüklü değilse
+dotnet tool install --global dotnet-ef   # if not installed
 dotnet ef database update
 ```
 
-### 4. Yönetici kullanıcısı ekle
-Panele giriş için `Users` tablosuna bir kayıt ekle:
+### 4. Add an admin user
+To sign in to the admin panel, insert a record into the `Users` table:
 
 ```sql
 INSERT INTO Users (Id, Username, Password)
-VALUES (NEWID(), 'admin', 'guclu-bir-sifre');
+VALUES (NEWID(), 'admin', 'a-strong-password');
 ```
 
-### 5. Çalıştır
+### 5. Run
 ```bash
 dotnet run
 ```
 
 - Site: `https://localhost:7066`
-- Yönetim paneli: `https://localhost:7066/Management`
+- Admin panel: `https://localhost:7066/Management`
 
-## Lisans
+## License
 
-Bu proje kişisel/portföy amaçlı geliştirilmiştir.
+This project was developed for personal / portfolio purposes.
