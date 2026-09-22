@@ -1,0 +1,116 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model CreateTestimonialPage
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Edit</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Back</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" style="color: red;"></div>
+
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialHeader"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialHeader">
+                <span asp-validation-for="CreateTestimonialHeader" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialUpperTitle"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialUpperTitle">
+                <span asp-validation-for="CreateTestimonialUpperTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialTitle"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialTitle">
+                <span asp-validation-for="CreateTestimonialTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialSubTitle"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialSubTitle">
+                <span asp-validation-for="CreateTestimonialSubTitle" style="color: red;"></span>
+            </div>
+
+            
+            
+            
+            
+            
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialDescription"></label>
+                <textarea class="form-control" asp-for="CreateTestimonialDescription"></textarea>
+                <span asp-validation-for="CreateTestimonialDescription" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialTitle1"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialTitle1">
+                <span asp-validation-for="CreateTestimonialTitle1" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialIcon1"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialIcon1">
+                <span asp-validation-for="CreateTestimonialIcon1" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialDescription1"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialDescription1">
+                <span asp-validation-for="CreateTestimonialDescription1" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialTitle2"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialTitle2">
+                <span asp-validation-for="CreateTestimonialTitle2" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialDescription2"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialDescription2">
+                <span asp-validation-for="CreateTestimonialDescription2" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialIcon2"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialIcon2">
+                <span asp-validation-for="CreateTestimonialIcon2" style="color: red;"></span>
+            </div>
+
+            
+            
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialTitle3"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialTitle3">
+                <span asp-validation-for="CreateTestimonialTitle3" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialDescription3"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialDescription3">
+                <span asp-validation-for="CreateTestimonialDescription3" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialIcon3"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialIcon3">
+                <span asp-validation-for="CreateTestimonialIcon3" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="CreateTestimonialButtonText"></label>
+                <input type="text" class="form-control" asp-for="CreateTestimonialButtonText">
+                <span asp-validation-for="CreateTestimonialButtonText" style="color: red;"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>

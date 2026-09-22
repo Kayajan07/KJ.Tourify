@@ -1,0 +1,78 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model GuidePage
+<partial name="_PageHeader" model="new PageHeaderViewModel(Model.GuideHeader)" />
+    <div class="container-fluid guide py-5">
+        <div class="container py-5">
+            <div class="mx-auto text-center mb-5 section-intro">
+                <p class="section-title px-3">@Model.GuideUpperTitle</p>
+                <h2 class="mb-0">@Model.GuideTitle</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="guide-item">
+                        <div class="guide-img">
+                            <div class="guide-img-efects">
+                                <img src="@Url.Content(ImagePath.Resolve(Model.GuideImageUrl1, ImagePath.AvatarPlaceholder))" class="img-fluid w-100 rounded-top" alt="Portrait of Tourify guide @Model.GuideName1" width="600" height="700" loading="lazy" decoding="async">
+                            </div>
+                           
+                        </div>
+                        <div class="guide-title text-center rounded-bottom p-4">
+                            <div class="guide-title-inner">
+                                <h3 class="guide-name mt-3">@Model.GuideName1</h3>
+                                <p class="mb-0">@Model.GuideDescription1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="guide-item">
+                        <div class="guide-img">
+                            <div class="guide-img-efects">
+                                <img src="@Url.Content(ImagePath.Resolve(Model.GuideImageUrl2, ImagePath.AvatarPlaceholder))" class="img-fluid w-100 rounded-top" alt="Portrait of Tourify guide @Model.GuideName2" width="600" height="700" loading="lazy" decoding="async">
+                            </div>
+                            
+                        </div>
+                        <div class="guide-title text-center rounded-bottom p-4">
+                            <div class="guide-title-inner">
+                                <h3 class="guide-name mt-3">@Model.GuideName2</h3>
+                                <p class="mb-0">@Model.GuideDescription2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="guide-item">
+                        <div class="guide-img">
+                            <div class="guide-img-efects">
+                                <img src="@Url.Content(ImagePath.Resolve(Model.GuideImageUrl3, ImagePath.AvatarPlaceholder))" class="img-fluid w-100 rounded-top" alt="Portrait of Tourify guide @Model.GuideName3" width="600" height="700" loading="lazy" decoding="async">
+                            </div>
+                            
+                        </div>
+                        <div class="guide-title text-center rounded-bottom p-4">
+                            <div class="guide-title-inner">
+                                <h3 class="guide-name mt-3">@Model.GuideName3</h3>
+                                <p class="mb-0">@Model.GuideDescription3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="guide-item">
+                        <div class="guide-img">
+                            <div class="guide-img-efects">
+                                <img src="@Url.Content(ImagePath.Resolve(Model.GuideImageUrl4, ImagePath.AvatarPlaceholder))" class="img-fluid w-100 rounded-top" alt="Portrait of Tourify guide @Model.GuideName4" width="600" height="700" loading="lazy" decoding="async">
+                            </div>
+                            
+                        </div>
+                        <div class="guide-title text-center rounded-bottom p-4">
+                            <div class="guide-title-inner">
+                                <h3 class="guide-name mt-3">@Model.GuideName4</h3>
+                                <p class="mb-0">@Model.GuideDescription4</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

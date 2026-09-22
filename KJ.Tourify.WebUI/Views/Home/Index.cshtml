@@ -1,0 +1,124 @@
+@model HomePage
+@{
+    var slides = new[]
+    {
+        (Image: Model.ImageUrl1, Title: Model.Title1),
+        (Image: Model.ImageUrl2, Title: Model.Title2),
+        (Image: Model.ImageUrl3, Title: Model.Title3)
+    };
+    var services = new[] { Model.HomeAboutService1, Model.HomeAboutService2, Model.HomeAboutService3, Model.HomeAboutService4 }
+        .Where(x => !string.IsNullOrWhiteSpace(x))
+        .ToList();
+}
+
+<div class="carousel-header">
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            @for (var i = 0; i < slides.Length; i++)
+            {
+                <button type="button" data-bs-target="#carouselId" data-bs-slide-to="@i"
+                        class="@(i == 0 ? "active" : null)" aria-current="@(i == 0 ? "true" : null)"
+                        aria-label="Slide @(i + 1)"></button>
+            }
+        </div>
+        <div class="carousel-inner">
+            @for (var i = 0; i < slides.Length; i++)
+            {
+                var slide = slides[i];
+                <div class="carousel-item @(i == 0 ? "active" : null)">
+                    <img src="@Url.Content(ImagePath.Resolve(slide.Image))" alt="@slide.Title" width="1920" height="1080"
+                         loading="@(i == 0 ? "eager" : "lazy")" fetchpriority="@(i == 0 ? "high" : "low")">
+                    <div class="carousel-caption">
+                        <div class="p-3 hero-caption">
+                            <p class="hero-eyebrow">@Model.UpperTitle</p>
+                            @if (i == 0)
+                            {
+                                <h1 class="hero-title">@slide.Title</h1>
+                            }
+                            else
+                            {
+                                <h2 class="hero-title">@slide.Title</h2>
+                            }
+                            <p class="hero-text">@Model.Description</p>
+                            @if (!string.IsNullOrWhiteSpace(Model.HomeButtonText))
+                            {
+                                <a class="btn btn-cta btn-lg rounded-pill px-5" asp-controller="Home" asp-action="Tours">@Model.HomeButtonText</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<vc:tour-search inline="false"></vc:tour-search>
+
+<section class="container-fluid about py-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5">
+                <div class="about-media">
+                    <img src="@Url.Content(ImagePath.Resolve(Model.HomeAboutImageUrl))" alt="Tourify travelers exploring a destination"
+                         width="640" height="800" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <p class="section-about-title pe-3">@Model.HomeAboutUpperTitle</p>
+                <h2 class="about-title mb-4">@Model.HomeAboutTitle</h2>
+                <p class="mb-4">@Model.HomeAboutDescription</p>
+
+                <a class="btn btn-cta rounded-pill py-3 px-5 mb-4" asp-controller="Home" asp-action="About">@Model.HomeAboutButtonText</a>
+
+                <div class="about-services">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
+                        <h3 class="about-services-title mb-0">@Model.HomeAboutServicesTitle</h3>
+                        <a class="btn btn-outline-brand rounded-pill py-2 px-4" asp-controller="Home" asp-action="Services">@Model.HomeAboutServicesButtonText</a>
+                    </div>
+                    <ul class="row gy-3 gx-3 list-unstyled mb-0">
+                        @foreach (var service in services)
+                        {
+                            <li class="col-sm-6">
+                                <div class="about-service-item">
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                    <span>@service</span>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<vc:featured-tours count="3"></vc:featured-tours>
+
+<vc:stats-bar></vc:stats-bar>
+
+<vc:gallery-strip count="8"></vc:gallery-strip>
+
+<section class="container-fluid destination pb-5">
+    <div class="container pb-5">
+        <div class="tourify-section-cta">
+            <div class="tourify-section-cta-content">
+                <div>
+                    <span class="tourify-section-cta-label">@Model.HomePageDestinationTitle</span>
+                    <p class="mb-0">@Model.HomeDestinationDescription</p>
+                </div>
+            </div>
+            <a asp-controller="Home" asp-action="Tours" class="btn btn-cta rounded-pill py-3 px-4">
+                @Model.HomeDestinationButtonText <i class="fa fa-arrow-right ms-2" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</section>

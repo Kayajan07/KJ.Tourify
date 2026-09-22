@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Görsel yok">
+  <rect width="800" height="600" fill="#e9edf5"/>
+  <g fill="none" stroke="#13357B" stroke-opacity=".35" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="190" y="180" width="420" height="300" rx="20"/>
+    <path d="M210 420 L330 300 L410 380 L500 290 L590 400"/>
+  </g>
+  <circle cx="330" cy="255" r="26" fill="#13357B" fill-opacity=".35"/>
+</svg>

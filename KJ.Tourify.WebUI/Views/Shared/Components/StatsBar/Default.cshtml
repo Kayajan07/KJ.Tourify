@@ -1,0 +1,19 @@
+@model StatsViewModel
+<section class="stats-bar" aria-label="Tourify in numbers">
+    <div class="container">
+        <dl class="row g-4 mb-0 text-center">
+            <div class="col-12 col-md-4 stats-item">
+                <dt class="stats-label">Destinations</dt>
+                <dd class="stats-value">@Model.DestinationCount</dd>
+            </div>
+            <div class="col-12 col-md-4 stats-item">
+                <dt class="stats-label">Curated Tours</dt>
+                <dd class="stats-value">@Model.TourCount</dd>
+            </div>
+            <div class="col-12 col-md-4 stats-item">
+                <dt class="stats-label">Happy Travelers</dt>
+                <dd class="stats-value">@Model.TravelerCount</dd>
+            </div>
+        </dl>
+    </div>
+</section>

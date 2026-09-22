@@ -1,0 +1,42 @@
+@model TourSearchViewModel
+@{
+    var prefix = Model.Inline ? "tours-search" : "hero-search";
+}
+<div class="container tour-search @(Model.Inline ? "tour-search-inline" : "tour-search-hero")">
+    <form asp-controller="Home" asp-action="Tours" method="get" class="tour-search-card" role="search" aria-label="Search tours">
+        <div class="row g-3 align-items-end">
+            <div class="col-12 col-md-6 col-lg-3">
+                <label for="@prefix-city" class="form-label">Destination</label>
+                <select id="@prefix-city" name="cityId" class="form-select">
+                    <option value="">All destinations</option>
+                    @foreach (var city in Model.Cities)
+                    {
+                        <option value="@city.Id" selected="@(Model.CityId == city.Id)">@city.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <label for="@prefix-date" class="form-label">Date</label>
+                <input id="@prefix-date" name="date" type="date" class="form-control"
+                       value="@Model.Date?.ToString("yyyy-MM-dd")"
+                       min="@DateTime.Today.ToString("yyyy-MM-dd")">
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <label for="@prefix-guests" class="form-label">Guests</label>
+                <input id="@prefix-guests" name="guests" type="number" class="form-control"
+                       min="1" max="50" inputmode="numeric" placeholder="2" value="@Model.Guests">
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <button type="submit" class="btn btn-cta w-100">
+                    <i class="fa fa-search me-2" aria-hidden="true"></i>Search Tours
+                </button>
+            </div>
+        </div>
+        @if (Model.Inline && Model.HasFilter)
+        {
+            <p class="tour-search-reset mb-0 mt-3">
+                <a asp-controller="Home" asp-action="Tours">Clear filters</a>
+            </p>
+        }
+    </form>
+</div>

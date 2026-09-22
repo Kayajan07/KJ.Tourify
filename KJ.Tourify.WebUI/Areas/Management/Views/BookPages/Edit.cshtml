@@ -1,0 +1,78 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model BookPage
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Book Page Edit</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Geri</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" style="color: red;"></div>
+
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.BookImageUrl)
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="BookHeader"></label>
+                <input type="text" class="form-control" asp-for="BookHeader">
+                <span asp-validation-for="BookHeader" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="BookUpperTitle"></label>
+                <input type="text" class="form-control" asp-for="BookUpperTitle">
+                <span asp-validation-for="BookUpperTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="BookTitle"></label>
+                <input type="text" class="form-control" asp-for="BookTitle">
+                <span asp-validation-for="BookTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="BookDescription"></label>
+                <textarea class="form-control" asp-for="BookDescription"></textarea>
+                <span asp-validation-for="BookDescription" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <img src="@Model.BookImageUrl" width="75" />
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="BookImageUrl"></label>
+                <input type="file" class="form-control" name="BookImageUrl">
+                <span asp-validation-for="BookImageUrl" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="BookButtonText"></label>
+                <input type="text" class="form-control" asp-for="BookButtonText">
+                <span asp-validation-for="BookButtonText" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="BookFormTittle"></label>
+                <input type="text" class="form-control" asp-for="BookFormTittle">
+                <span asp-validation-for="BookFormTittle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="BookFormDescription"></label>
+                <textarea class="form-control" asp-for="BookFormDescription"></textarea>
+                <span asp-validation-for="BookFormDescription" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="BookFormButtonText"></label>
+                <input type="text" class="form-control" asp-for="BookFormButtonText">
+                <span asp-validation-for="BookFormButtonText" style="color: red;"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>

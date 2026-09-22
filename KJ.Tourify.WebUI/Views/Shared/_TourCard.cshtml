@@ -1,0 +1,31 @@
+@model TourItem
+@{
+    var imagePath = ImagePath.Resolve(Model.TourImageUrl);
+    var description = !string.IsNullOrWhiteSpace(Model.Description) ? Model.Description : Model.TourLocation;
+    var price = TourFormat.Price(Model.HowMuchMoney);
+}
+<article class="tour-card">
+    <a asp-controller="Home" asp-action="Tour" asp-route-id="@Model.Id" class="tour-card-media tour-detail-link" tabindex="-1" aria-hidden="true">
+        <img src="@Url.Content(imagePath)" alt="@Model.Title – @Model.TourLocation" width="800" height="600" loading="lazy" decoding="async">
+        @if (!string.IsNullOrEmpty(price))
+        {
+            <span class="tour-card-price">@price</span>
+        }
+    </a>
+    <ul class="tour-card-meta">
+        <li><i class="fa fa-map-marker-alt" aria-hidden="true"></i><span>@Model.TourLocation</span></li>
+        <li><i class="fa fa-calendar-alt" aria-hidden="true"></i><span>@TourFormat.Days(Model.TourDay)</span></li>
+        <li><i class="fa fa-user" aria-hidden="true"></i><span>@TourFormat.Persons(Model.TourPerson)</span></li>
+    </ul>
+    <div class="tour-card-body">
+        <span class="tour-card-city">@Model.City?.Name</span>
+        <h3 class="tour-card-title">
+            <a asp-controller="Home" asp-action="Tour" asp-route-id="@Model.Id" class="tour-detail-link">@Model.Title</a>
+        </h3>
+        <p class="tour-card-text">@description</p>
+        <div class="tour-card-actions">
+            <a asp-controller="Home" asp-action="Tour" asp-route-id="@Model.Id" class="tour-detail-link btn btn-outline-brand rounded-pill">Read More</a>
+            <a asp-controller="Home" asp-action="Booking" class="btn btn-cta rounded-pill">Book Now</a>
+        </div>
+    </div>
+</article>

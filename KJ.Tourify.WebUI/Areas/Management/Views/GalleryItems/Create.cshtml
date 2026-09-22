@@ -1,0 +1,51 @@
+@model GalleryItem
+
+@{
+    SelectList? Categories = ViewData["Categories"] != null
+        ? ViewData["Categories"] as SelectList : null;
+
+    SelectList? Pages = ViewData["Pages"] != null
+        ? ViewData["Pages"] as SelectList : null;
+
+}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Yeni Oge Ekle</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Geri</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="Title"></label>
+                <input class="form-control" asp-for="Title" type="text" />
+                <span asp-validation-for="Title" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GalleryImageUrl"></label>
+                <input type="file" class="form-control" name="GalleryImage">
+                <span asp-validation-for="GalleryImageUrl" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GalleryCategoryId"></label>
+                <select class="form-select" asp-for="GalleryCategoryId" asp-items="Categories">
+                </select>
+                <span asp-validation-for="GalleryCategoryId" style="color:red;"></span>
+            </div>
+
+            
+
+
+
+
+
+
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model ContactPage
+<partial name="_PageHeader" model="new PageHeaderViewModel(Model.ContactHeader)" />
+<div class="container-fluid contact bg-soft py-5">
+    <div class="container py-5">
+        <div class="mx-auto text-center mb-5 section-intro">
+                <p class="section-title px-3">@Model.ContactUpperTitle</p>
+                <h2 class="mb-0">@Model.ContactTitle</h2>
+        </div>
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-4">
+                <div class="bg-white rounded p-4">
+                    <div class="text-center mb-4">
+                        <i class="@Model.ContactLocationIcon" aria-hidden="true"></i>
+                            <h3 class="contact-info-title">@Model.ContactLocationTitle</h3>
+                        <p class="mb-0">@Model.ContactLocationDescription</p>
+                    </div>
+                    <div class="text-center mb-4">
+                        <i class="@Model.ContactPhoneIcon" aria-hidden="true"></i>
+                        <h3 class="contact-info-title">@Model.ContactPhoneTitle</h3>
+                        <p class="mb-0">@Model.ContactPhone1</p>
+                        <p class="mb-0">@Model.ContactPhone2</p>
+                    </div>
+
+                    <div class="text-center">
+                        <i class="@Model.ContactEmailIcon" aria-hidden="true"></i>
+                        <h3 class="contact-info-title">@Model.ContactEmailTitle</h3>
+                            <p class="mb-0">@Model.ContactEmail1</p>
+                            <p class="mb-0">@Model.ContactEmail2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                    <h3 class="mb-2">@Model.ContactSubTitle</h3>
+                    <p class="mb-4">@Model.ContactDescription</p>
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                <label for="name">Your Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                <label for="subject">Subject</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 160px"></textarea>
+                                <label for="message">Message</label>
+                            </div>
+                        </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="button" onclick="alert('Thank you! Your message has been sent successfully.')">
+                                    @Model.ContactButtonText
+                                </button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12">
+                <div class="rounded">
+                    <iframe class="rounded w-100 contact-map" title="Tourify office location on the map" src="@Model.ContactMapUrl"
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

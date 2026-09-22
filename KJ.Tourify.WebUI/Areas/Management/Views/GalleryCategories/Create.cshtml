@@ -1,0 +1,24 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model GalleryCategory
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Add New Gallery Category</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Back</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="Name"></label>
+                <input class="form-control" asp-for="Name" type="text" />
+                <span asp-validation-for="Name" style="color:red;"></span>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>C:\Users\minec\OneDrive\Desktop\KJ.Tourify(detay sayfalı)\KJ.Tourify(detay sayfalı)\KJ.Tourify\KJ.Tourify.WebUI\Areas\Management\Views\TourCities\Create.cshtml

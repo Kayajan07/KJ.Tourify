@@ -1,0 +1,130 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model GuidePage
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Guides Edit</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Geri</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" style="color: red;"></div>
+
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.GuideImageUrl1)
+            @Html.HiddenFor(x => x.GuideImageUrl2)
+            @Html.HiddenFor(x => x.GuideImageUrl3)
+            @Html.HiddenFor(x => x.GuideImageUrl4)
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideHeader"></label>
+                <input type="text" class="form-control" asp-for="GuideHeader" />
+                <span asp-validation-for="GuideHeader" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideUpperTitle"></label>
+                <input type="text" class="form-control" asp-for="GuideUpperTitle" />
+                <span asp-validation-for="GuideUpperTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideTitle"></label>
+                <input type="text" class="form-control" asp-for="GuideTitle" />
+                <span asp-validation-for="GuideTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideName1"></label>
+                <input type="text" class="form-control" asp-for="GuideName1" />
+                <span asp-validation-for="GuideName1" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideDescription1"></label>
+                <textarea class="form-control" asp-for="GuideDescription1"></textarea>
+                <span asp-validation-for="GuideDescription1" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <img src="@Model.GuideImageUrl1" width="75" />
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideImageUrl1"></label>
+                <input type="file" class="form-control" name="GuideImageUrl1" />
+                <span asp-validation-for="GuideImageUrl1" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideName2"></label>
+                <input type="text" class="form-control" asp-for="GuideName2" />
+                <span asp-validation-for="GuideName2" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideDescription2"></label>
+                <textarea class="form-control" asp-for="GuideDescription2"></textarea>
+                <span asp-validation-for="GuideDescription2" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <img src="@Model.GuideImageUrl2" width="75" />
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideImageUrl2"></label>
+                <input type="file" class="form-control" name="GuideImageUrl2" />
+                <span asp-validation-for="GuideImageUrl2" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideName3"></label>
+                <input type="text" class="form-control" asp-for="GuideName3" />
+                <span asp-validation-for="GuideName3" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideDescription3"></label>
+                <textarea class="form-control" asp-for="GuideDescription3"></textarea>
+                <span asp-validation-for="GuideDescription3" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <img src="@Model.GuideImageUrl3" width="75" />
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideImageUrl3"></label>
+                <input type="file" class="form-control" name="GuideImageUrl3" />
+                <span asp-validation-for="GuideImageUrl3" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideName4"></label>
+                <input type="text" class="form-control" asp-for="GuideName4" />
+                <span asp-validation-for="GuideName4" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideDescription4"></label>
+                <textarea class="form-control" asp-for="GuideDescription4"></textarea>
+                <span asp-validation-for="GuideDescription4" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <img src="@Model.GuideImageUrl4" width="75" />
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="GuideImageUrl4"></label>
+                <input type="file" class="form-control" name="GuideImageUrl4" />
+                <span asp-validation-for="GuideImageUrl4" style="color: red;"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>

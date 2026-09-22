@@ -1,0 +1,25 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+publish/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.rsuser
+
+# Publish profiles (contain local paths)
+**/Properties/PublishProfiles/
+
+# Database backups and local archives
+*.bak
+*.mdf
+*.ldf
+*.zip
+
+# Local settings
+appsettings.*.local.json
+.env

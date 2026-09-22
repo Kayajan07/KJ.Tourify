@@ -1,0 +1,61 @@
+@using KJ.Tourify.WebUI.Models.Entities
+@model ICollection<TourTestimonialItem>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Tour Testimonials</h5>
+        <a class="btn btn-primary float-end" asp-action="Create">Add Testimonial</a>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Tour</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.FullName</td>
+                        <td>@item.TourItem?.Title</td>
+                        <td>@item.Address</td>
+                        <td>
+                            <a class="btn btn-warning"
+                               asp-action="Update" asp-route-id="@item.Id">Edit</a>
+
+                            <button class="btn btn-danger" onclick='Delete("@(item.Id)", this)'>Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+
+@section PageScripts{
+        <script>
+            function Delete(id, elem){
+                $.ajax({
+                    url: "/Management/TourTestimonialItems/Delete/" + id,
+                    method: "POST",
+                    success: function(s){
+                       if(s.success == true){
+                           $(elem).closest("tr").remove();
+                       }
+                       else{
+                           alert(s.message);
+                       }
+                    },
+                    error: function(){
+                        alert("Bir sorun oluştu!");
+                    }
+                })
+            }
+        </script>
+}

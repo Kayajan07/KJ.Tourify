@@ -1,0 +1,21 @@
+@model GalleryCardViewModel
+@{
+    var item = Model.Item;
+    var imageUrl = Url.Content(ImagePath.Resolve(item.GalleryImageUrl));
+    var altText = string.IsNullOrWhiteSpace(item.Title)
+        ? $"{item.GalleryCategory?.Name} travel photo"
+        : $"{item.Title} – {item.GalleryCategory?.Name}";
+}
+<figure class="gallery-item">
+    <img src="@imageUrl" alt="@altText" width="800" height="600" loading="lazy" decoding="async">
+    <figcaption class="gallery-caption">
+        @if (!string.IsNullOrEmpty(item.GalleryCategory?.Name))
+        {
+            <span class="gallery-category">@item.GalleryCategory.Name</span>
+        }
+        <span class="gallery-title">@item.Title</span>
+    </figcaption>
+    <a href="@imageUrl" data-lightbox="@Model.LightboxGroup" data-title="@item.Title" class="gallery-zoom" aria-label="Open @item.Title in full size">
+        <i class="fas fa-plus" aria-hidden="true"></i>
+    </a>
+</figure>

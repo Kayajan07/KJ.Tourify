@@ -1,0 +1,52 @@
+@model GalleryPage
+
+@{
+    var categories = Model.GalleryCategories?.ToList() ?? new List<GalleryCategory>();
+    var items = Model.GalleryItems?.ToList() ?? new List<GalleryItem>();
+    var columnClass = "col-sm-6 col-lg-4 col-xl-3";
+
+    var tabs = new List<(string Id, string Name, List<GalleryItem> Items)> { ("GalleryTab-1", "All", items) };
+    for (var i = 0; i < categories.Count; i++)
+    {
+        tabs.Add(($"GalleryTab-{i + 2}", categories[i].Name ?? string.Empty,
+            items.Where(x => x.GalleryCategoryId == categories[i].Id).ToList()));
+    }
+}
+
+<partial name="_PageHeader" model="new PageHeaderViewModel(Model.GalleryHeader)" />
+
+<section class="container-fluid gallery py-5 my-5">
+    <div class="container">
+        <div class="mx-auto text-center mb-5 section-intro">
+            <p class="section-title px-3">@Model.GalleryUpperTitle</p>
+            <h2 class="mb-4">@Model.GalleryTitle</h2>
+            <p class="mb-0">@Model.GalleryDescription</p>
+        </div>
+        <div class="tab-class text-center">
+            <ul class="nav gallery-filter justify-content-center mb-5" role="tablist">
+                @for (var i = 0; i < tabs.Count; i++)
+                {
+                    <li class="nav-item" role="presentation">
+                        <a class="gallery-filter-link @(i == 0 ? "active" : null)" data-bs-toggle="pill" href="#@tabs[i].Id"
+                           role="tab" aria-controls="@tabs[i].Id" aria-selected="@(i == 0 ? "true" : "false")">@tabs[i].Name</a>
+                    </li>
+                }
+            </ul>
+            <div class="tab-content">
+                @for (var i = 0; i < tabs.Count; i++)
+                {
+                    <div id="@tabs[i].Id" class="tab-pane fade p-0 @(i == 0 ? "show active" : null)" role="tabpanel">
+                        <div class="row g-3">
+                            @foreach (var item in tabs[i].Items)
+                            {
+                                <div class="@columnClass">
+                                    <partial name="_GalleryCard" model="new GalleryCardViewModel(item, tabs[i].Id)" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

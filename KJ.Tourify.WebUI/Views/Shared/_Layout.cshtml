@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <partial name="_Head" />
+    </head>
+    <body>
+        <div id="spinner" class="show bg-surface position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-brand spinner-lg" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        
+        <partial name="_Header" />
+        
+        
+       
+        <main class="main">
+
+            @RenderBody()
+
+        @* <partial name="_Subscribe" /> *@
+
+        </main>
+        
+        
+        
+        <partial name="_Footer" />
+        
+        
+        <a href="#" class="btn btn-primary btn-md-square back-to-top" aria-label="Back to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+
+        <partial name="_Scripts" />
+    @await RenderSectionAsync("Scripts", false)
+    </body>
+    </html>

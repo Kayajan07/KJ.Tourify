@@ -1,0 +1,71 @@
+@model TourItem
+
+@{
+    SelectList? Cities = ViewData["Cities"] != null
+        ? ViewData["Cities"] as SelectList : null;
+}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Öğeyi Düzenle</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Geri</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Update" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="HowMuchMoney"></label>
+                <input class="form-control" asp-for="HowMuchMoney" type="text" />
+                <span asp-validation-for="HowMuchMoney" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="Title"></label>
+                <input class="form-control" asp-for="Title" type="text" />
+                <span asp-validation-for="Title" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="Description"></label>
+                <textarea class="form-control" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="TourImageUrl"></label>
+                <input type="file" class="form-control" name="TourImage">
+                <span asp-validation-for="TourImageUrl" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="TourLocation"></label>
+                <textarea class="form-control" asp-for="TourLocation"></textarea>
+                <span asp-validation-for="TourLocation" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="TourCityId"></label>
+                <select class="form-select" asp-for="TourCityId" asp-items="Cities">
+                </select>
+                <span asp-validation-for="TourCityId" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="TourDay"></label>
+                <textarea class="form-control" asp-for="TourDay"></textarea>
+                <span asp-validation-for="TourDay" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="TourPerson"></label>
+                <textarea class="form-control" asp-for="TourPerson"></textarea>
+                <span asp-validation-for="TourPerson" style="color:red;"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>

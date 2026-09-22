@@ -1,0 +1,126 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model ContactPage
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Contact Page Düzenle</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Geri</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" style="color: red;"></div>
+
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactHeader"></label>
+                <input type="text" class="form-control" asp-for="ContactHeader">
+                <span asp-validation-for="ContactHeader" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactUpperTitle"></label>
+                <input type="text" class="form-control" asp-for="ContactUpperTitle">
+                <span asp-validation-for="ContactUpperTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactTitle"></label>
+                <input type="text" class="form-control" asp-for="ContactTitle">
+                <span asp-validation-for="ContactTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactSubTitle"></label>
+                <input type="text" class="form-control" asp-for="ContactSubTitle">
+                <span asp-validation-for="ContactSubTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactDescription"></label>
+                <textarea class="form-control" asp-for="ContactDescription"></textarea>
+                <span asp-validation-for="ContactDescription" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactLocationTitle"></label>
+                <input type="text" class="form-control" asp-for="ContactLocationTitle">
+                <span asp-validation-for="ContactLocationTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactLocationIcon"></label>
+                <input type="text" class="form-control" asp-for="ContactLocationIcon">
+                <span asp-validation-for="ContactLocationIcon" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactLocationDescription"></label>
+                <textarea class="form-control" asp-for="ContactLocationDescription"></textarea>
+                <span asp-validation-for="ContactLocationDescription" style="color: red;"></span>
+            </div>
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactPhoneTitle"></label>
+                <input type="text" class="form-control" asp-for="ContactPhoneTitle">
+                <span asp-validation-for="ContactPhoneTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactPhone1"></label>
+                <input type="text" class="form-control" asp-for="ContactPhone1">
+                <span asp-validation-for="ContactPhone1" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactPhone2"></label>
+                <input type="text" class="form-control" asp-for="ContactPhone2">
+                <span asp-validation-for="ContactPhone2" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactPhoneIcon"></label>
+                <input type="text" class="form-control" asp-for="ContactPhoneIcon">
+                <span asp-validation-for="ContactPhoneIcon" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactEmailTitle"></label>
+                <input type="text" class="form-control" asp-for="ContactEmailTitle">
+                <span asp-validation-for="ContactEmailTitle" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactEmail1"></label>
+                <input type="text" class="form-control" asp-for="ContactEmail1">
+                <span asp-validation-for="ContactEmail1" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactEmail2"></label>
+                <input type="text" class="form-control" asp-for="ContactEmail2">
+                <span asp-validation-for="ContactEmail2" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactEmailIcon"></label>
+                <input type="text" class="form-control" asp-for="ContactEmailIcon">
+                <span asp-validation-for="ContactEmailIcon" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactButtonText"></label>
+                <input type="text" class="form-control" asp-for="ContactButtonText">
+                <span asp-validation-for="ContactButtonText" style="color: red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ContactMapUrl"></label>
+                <textarea class="form-control" asp-for="ContactMapUrl"></textarea>
+                <span asp-validation-for="ContactMapUrl" style="color: red;"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>

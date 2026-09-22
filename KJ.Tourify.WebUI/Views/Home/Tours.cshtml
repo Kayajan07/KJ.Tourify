@@ -1,0 +1,37 @@
+@model TourPage
+@{
+    var tourItems = Model.TourItems?.ToList() ?? new List<TourItem>();
+    var useCarousel = tourItems.Count > 3;
+}
+
+<partial name="_PageHeader" model="new PageHeaderViewModel(Model.TourHeader)" />
+
+<vc:tour-search inline="true"></vc:tour-search>
+
+<section class="container-fluid packages py-5">
+    <div class="container py-5">
+        <div class="mx-auto text-center mb-5 section-intro">
+            <p class="section-title px-3">@Model.TourUpperTitle</p>
+            <h2 class="mb-0">@Model.TourTitle</h2>
+        </div>
+
+        @if (tourItems.Count == 0)
+        {
+            <div class="tour-empty text-center">
+                <p class="mb-3">No tours match your search yet. Try another destination or a smaller group size.</p>
+                <a asp-controller="Home" asp-action="Tours" class="btn btn-outline-brand rounded-pill">Show all tours</a>
+            </div>
+        }
+        else
+        {
+            <div class="@(useCarousel ? "packages-carousel owl-carousel" : "row g-4 tour-grid")">
+                @foreach (var item in tourItems)
+                {
+                    <div class="@(useCarousel ? "tour-slide" : "col-md-6 col-lg-4")">
+                        <partial name="_TourCard" model="item" />
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

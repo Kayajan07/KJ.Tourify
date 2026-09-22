@@ -1,0 +1,54 @@
+@using KJ.Tourify.WebUI.Models.Entities
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model TourTestimonialItem
+
+@{
+    SelectList? TourItems = ViewData["TourItems"] != null
+        ? ViewData["TourItems"] as SelectList : null;
+}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Add New Testimonial</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Back</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="FullName"></label>
+                <input class="form-control" asp-for="FullName" type="text" />
+                <span asp-validation-for="FullName" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="ProfileImageUrl"></label>
+                <input type="file" class="form-control" name="ProfileImage">
+                <span asp-validation-for="ProfileImageUrl" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="Address"></label>
+                <input class="form-control" asp-for="Address" type="text" />
+                <span asp-validation-for="Address" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="Description"></label>
+                <textarea class="form-control" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="TourItemId"></label>
+                <select class="form-select" asp-for="TourItemId" asp-items="TourItems">
+                </select>
+                <span asp-validation-for="TourItemId" style="color:red;"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+.menu .app-brand.brand-main {
+  height: 64px;
+  margin-top: 12px;
+}
+
+.app-brand-logo.brand-main i {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.app-brand-text.brand-main {
+  font-size: 1.75rem;
+  letter-spacing: -0.5px;
+}
+
+.layout-navbar-fixed .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu) .layout-page {
+  padding-top: 76px !important;
+}
+.layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
+  padding-top: 64px !important;
+}
+
+.content-wrapper .navbar {
+  z-index: auto;
+}

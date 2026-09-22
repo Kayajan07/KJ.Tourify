@@ -1,0 +1,123 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model CreateTestimonialPage
+<partial name="_PageHeader" model="new PageHeaderViewModel(Model.CreateTestimonialHeader)" />
+<div class="container-fluid contact bg-soft py-5">
+    <div class="container py-5">
+
+        <div class="mx-auto text-center mb-5 section-intro">
+            <p class="section-title px-3">@Model.CreateTestimonialUpperTitle</p>
+            <h2 class="mb-0">@Model.CreateTestimonialTitle</h2>
+        </div>
+
+        <div class="row g-5 align-items-center">
+
+            <div class="col-lg-4">
+                <div class="bg-white rounded p-4">
+
+                    <div class="text-center mb-4">
+                        <i class="@Model.CreateTestimonialIcon1" aria-hidden="true"></i>
+                        <h3 class="contact-info-title">@Model.CreateTestimonialTitle1</h3>
+                        <p class="mb-0">
+                            @Model.CreateTestimonialDescription1
+                        </p>
+                    </div>
+
+                    <div class="text-center mb-4">
+                        <i class="@Model.CreateTestimonialIcon2" aria-hidden="true"></i>
+                        <h3 class="contact-info-title">@Model.CreateTestimonialTitle2</h3>
+                        <p class="mb-0">
+                            @Model.CreateTestimonialDescription2
+                        </p>
+                    </div>
+
+                    <div class="text-center">
+                        <i class="@Model.CreateTestimonialIcon3" aria-hidden="true"></i>
+                        <h3 class="contact-info-title">@Model.CreateTestimonialTitle3</h3>
+                        <p class="mb-0">
+                            @Model.CreateTestimonialDescription3
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <h3 class="mb-2">@Model.CreateTestimonialSubTitle</h3>
+                <p class="mb-4">
+                    @Model.CreateTestimonialDescription
+                </p>
+
+                @{
+                    var selectedTourItem = Model
+                    .TourItems?
+                    .FirstOrDefault();
+                }
+
+                <form method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="TourItemId" value="@selectedTourItem?.Id" />
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text"
+                                       class="form-control"
+                                       id="fullName"
+                                       name="FullName"
+                                       placeholder="Your Name">
+
+                                <label for="fullName">Your Name</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text"
+                                       class="form-control"
+                                       id="address"
+                                       name="Address"
+                                       placeholder="Your Location">
+
+                                <label for="address">Your Location</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="bg-white rounded p-3">
+                                <label for="profileImageFile" class="form-label mb-2">
+                                    Profile Image
+                                </label>
+
+                                <input type="file"
+                                       class="form-control"
+                                       id="profileImageFile"
+                                       name="ProfileImageFile"
+                                       accept="image/*">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control"
+                                          id="description"
+                                          name="Description"
+                                          placeholder="Write your review here"
+                                          style="height: 160px"></textarea>
+
+                                <label for="description">Your Review</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">
+                                @Model.CreateTestimonialButtonText
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

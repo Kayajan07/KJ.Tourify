@@ -1,0 +1,110 @@
+﻿@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand brand-main">
+        <a asp-area="Management" asp-controller="Home" asp-action="Index" class="app-brand-link">
+            <span class="app-brand-logo brand-main">
+                <i class="bx bx-map-alt text-primary"></i>
+            </span>
+            <span class="app-brand-text brand-main menu-text fw-bolder ms-2">Tourify</span>
+        </a>
+
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+        </a>
+    </div>
+
+    <div class="menu-inner-shadow"></div>
+
+    <ul class="menu-inner py-1">
+        
+
+        <li class="menu-item @(controller == "HomePages" ? "active" : "")">
+            <a asp-area="Management" asp-controller="HomePages" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="HomePage">HomePage</div>
+            </a>
+        </li>
+        <li class="menu-item @(controller == "AboutPages" ? "active" : "")">
+            <a asp-area="Management" asp-controller="AboutPages" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="AboutPage">AboutPage</div>
+            </a>
+        </li>
+        <li class="menu-item @(controller == "GalleryPages" ? "active" : "")">
+            <a asp-area="Management" asp-controller="GalleryPages" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="GalleryPage">GalleryPage</div>
+            </a>
+        </li>
+        <li class="menu-item @(controller == "GalleryItems" ? "active" : "")">
+            <a asp-area="Management" asp-controller="GalleryItems" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="GalleryItem">GalleryItem</div>
+            </a>
+        </li>
+        <li class="menu-item @(controller == "GalleryCategories" ? "active" : "")">
+            <a asp-area="Management" asp-controller="GalleryCategories" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="GalleryCategory">GalleryCategory</div>
+            </a>
+        </li>
+        <li class="menu-item @(controller == "GuidesPages" ? "active" : "")">
+            <a asp-area="Management" asp-controller="GuidesPages" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="GuidePage">GuidePage</div>
+            </a>
+        </li>
+        
+        <li class="menu-item @(controller == "TourPages" ? "active" : "")">
+            <a asp-area="Management" asp-controller="TourPages" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="TourPage">TourPage</div>
+            </a>
+        <li class="menu-item @(controller == "TourItems" ? "active" : "")">
+            <a asp-area="Management" asp-controller="TourItems" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Tour Items">Tour Items</div>
+            </a>
+        </li>
+        <li class="menu-item @(controller == "TourCities" ? "active" : "")">
+            <a asp-area="Management" asp-controller="TourCities" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Cities">Cities</div>
+            </a>
+        </li>
+            <li class="menu-item @(controller == "CreateTestimonialPages" ? "active" : "")">
+                <a asp-area="Management" asp-controller="CreateTestimonialPages" asp-action="Index" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="CreateTestimonialPage">CreateTestimonialPage</div>
+                </a>
+            </li>
+        <li class="menu-item @(controller == "TourTestimonialItems" ? "active" : "")">
+            <a asp-area="Management" asp-controller="TourTestimonialItems" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Testimonials">Testimonials</div>
+            </a>
+        </li>
+            <li class="menu-item @(controller == "ServicePages" ? "active" : "")">
+                <a asp-area="Management" asp-controller="ServicePages" asp-action="Index" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="ServicePage">ServicePage</div>
+                </a>
+            </li>
+            <li class="menu-item @(controller == "ContactPages" ? "active" : "")">
+                <a asp-area="Management" asp-controller="ContactPages" asp-action="Index" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="ContactPage">ContactPage</div>
+                </a>
+            </li>
+            <li class="menu-item @(controller == "BookPages" ? "active" : "")">
+                <a asp-area="Management" asp-controller="BookPages" asp-action="Index" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="BookPage">BookPage</div>
+                </a>
+            </li>
+
+    </ul>
+</aside>

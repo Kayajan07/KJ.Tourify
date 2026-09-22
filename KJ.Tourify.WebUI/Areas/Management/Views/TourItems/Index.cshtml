@@ -1,0 +1,63 @@
+﻿@model ICollection<TourItem>
+
+
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Portföy Öğeleri</h5>
+        <a class="btn btn-primary float-end" asp-action="Create">Yeni Ekle</a>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">City</th>
+                    <th scope="col">title</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.City?.Name</td>
+                        <td>@item.Title</td>
+                        <td>
+                            <a class="btn btn-primary"
+                                asp-action="Detail" asp-route-id="@item.Id">Detail</a>
+
+                            <a class="btn btn-warning"
+                               asp-action="Update" asp-route-id="@item.Id">edit</a>
+
+                            <button class="btn btn-danger" onclick='Delete("@(item.Id)", this)'>Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+
+@section PageScripts{
+        <script>
+            function Delete(id, elem){
+                $.ajax({
+                    url: "/Management/TourItems/Delete/" + id,
+                    method: "POST",
+                    success: function(s){
+                       if(s.success == true){
+                           $(elem).closest("tr").remove();
+                       }
+                       else{
+                           alert(s.message);
+                       }
+                    },
+                    error: function(){
+                        alert("Bir sorun oluştu!");
+                    }
+                })
+            }
+        </script>
+}

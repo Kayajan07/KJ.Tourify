@@ -1,0 +1,26 @@
+@model List<GalleryItem>
+@{ const string lightboxGroup = "home-gallery"; }
+@if (Model.Count > 0)
+{
+    <section class="container-fluid gallery gallery-strip py-5" aria-labelledby="gallery-strip-title">
+        <div class="container py-5">
+            <div class="section-heading">
+                <div>
+                    <p class="section-title">Gallery</p>
+                    <h2 id="gallery-strip-title" class="section-heading-title">Moments from the road</h2>
+                </div>
+                <a asp-controller="Home" asp-action="Gallery" class="btn btn-outline-brand rounded-pill">
+                    View All <i class="fa fa-arrow-right ms-2" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="row g-3">
+                @foreach (var item in Model)
+                {
+                    <div class="col-6 col-lg-3">
+                        <partial name="_GalleryCard" model="new GalleryCardViewModel(item, lightboxGroup)" />
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

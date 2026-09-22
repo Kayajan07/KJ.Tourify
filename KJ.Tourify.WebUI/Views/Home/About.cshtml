@@ -1,0 +1,43 @@
+@model AboutPage
+
+<partial name="_PageHeader" model="new PageHeaderViewModel(Model?.AboutHeader)" />
+
+<section class="container-fluid about py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+
+                <div class="text-center mb-4">
+                    <p class="section-title px-3">@Model?.AboutUpperTitle</p>
+                    <h2 class="mb-4">@Model?.AboutTitle</h2>
+                </div>
+
+                <div class="about-media about-media-wide mb-5">
+                    <img src="@Url.Content(ImagePath.Resolve(Model?.AboutImageUrl))" alt="Tourify guides with a group of travelers"
+                         width="1200" height="480" loading="lazy" decoding="async">
+                </div>
+
+                <div class="about-body">
+                    @Model?.AboutDescription
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid guide py-5">
+    <div class="container py-5">
+        <div class="tourify-section-cta tourify-section-cta-guide">
+            <div class="tourify-section-cta-content">
+                <div>
+                    <span class="tourify-section-cta-label">@Model?.AboutGuideTitle</span>
+                    <p class="mb-0">@Model?.AboutGuideDescription</p>
+                </div>
+            </div>
+            <a asp-controller="Home" asp-action="Guides" class="btn btn-cta rounded-pill py-3 px-4">
+                @Model?.AboutGuideButtonText <i class="fa fa-arrow-right ms-2" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</section>

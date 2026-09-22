@@ -1,0 +1,92 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model BookPage
+
+
+
+<partial name="_PageHeader" model="new PageHeaderViewModel(Model.BookHeader)" />
+<div class="container-fluid booking py-5" style="--booking-image: url('@Url.Content(ImagePath.Resolve(Model.BookImageUrl, "~/assets/img/tour-booking-bg.jpg"))')">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <p class="section-booking-title pe-3">@Model.BookUpperTitle</p>
+                <h2 class="text-white mb-4">@Model.BookButtonText</h2>
+
+                <p class="text-white mb-4">
+                    @Model.BookDescription
+                </p>
+
+               
+
+                <a asp-controller="Home" asp-action="Tours" class="btn btn-light rounded-pill py-3 px-5 mt-2">
+                    @Model.BookButtonText
+                </a>
+            </div>
+
+            <div class="col-lg-6">
+                <h2 class="text-white mb-3">@Model.BookFormTittle</h2>
+                <p class="text-white mb-4">
+                    @Model.BookFormDescription
+                </p>
+
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                <label for="name">Your Name</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="tel" class="form-control" id="number" placeholder="Your Number">
+                                <label for="number">Your Number</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="city" placeholder="Which City">
+                                <label for="city">Which City</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="country" placeholder="Which Country">
+                                <label for="country">Which Country</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="personCount" placeholder="How Many Persons">
+                                <label for="personCount">How Many Persons</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                <label for="message">Special Request</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-cta w-100 py-3" type="button" onclick="alert('Your reservation has been completed successfully.')">
+                                @Model.BookFormButtonText
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

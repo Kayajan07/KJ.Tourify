@@ -1,0 +1,155 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model TourItem
+@{ var pageHeader = new PageHeaderViewModel(Model.Title ?? "Tour Detail", "Tours", "Tours"); }
+<partial name="_PageHeader" model="pageHeader" />
+
+
+<div class="container-fluid packages py-5">
+    <div class="container pt-5 pb-0">
+        <div class="row g-5">
+
+            <div class="col-lg-8">
+                <div class="packages-item">
+
+                    <div class="packages-img">
+                        <img id="tour-image"
+                             src="@Url.Content(ImagePath.Resolve(Model.TourImageUrl))"
+                             class="img-fluid w-100 rounded-top tour-detail-image"
+                             alt="@Model.Title – @Model.TourLocation" width="1200" height="800" fetchpriority="high">
+
+                            <div class="packages-info">
+
+                                <small>
+                                    <i class="fa fa-map-marker-alt me-2" aria-hidden="true"></i>
+                                    <span id="tour-location">@Model.TourLocation</span>
+                                </small>
+
+                                <small>
+                                    <i class="fa fa-calendar-alt me-2" aria-hidden="true"></i>
+                                    <span id="tour-duration">@TourFormat.Days(Model.TourDay)</span>
+                                </small>
+
+                                <small>
+                                    <i class="fa fa-user me-2" aria-hidden="true"></i>
+                                    <span id="tour-person">@TourFormat.Persons(Model.TourPerson)</span>
+                                </small>
+                            </div>
+
+                            <div id="tour-price" class="packages-price py-2 px-4">
+                                @TourFormat.Price(Model.HowMuchMoney)
+                            </div>
+                        </div>
+
+                        <div class="packages-content bg-soft">
+                            <div class="p-4">
+                                <h2 id="tour-title" class="mb-0">@(Model.Title ?? "Tour Detail")</h2>
+
+                                <small id="tour-category" class="text-uppercase">
+                                    @Model.City?.Name
+                                </small>
+
+                                
+
+                                <p id="tour-description" class="mb-0">
+                                    @(!string.IsNullOrEmpty(Model.Description) ? Model.Description : Model.TourLocation)
+                                </p>
+                            </div>
+
+                            <div class="tour-card-actions tour-detail-actions">
+                                <a asp-controller="Home" asp-action="Tours" class="btn btn-outline-brand rounded-pill">Back to Tours</a>
+                                <a asp-controller="Home" asp-action="Booking" class="btn btn-cta rounded-pill">Book Now</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4">
+                    <div class="bg-soft rounded p-4 tour-info">
+                        <h3 class="h5 mb-3">Tour Info</h3>
+
+                        <p class="mb-2">
+                            <i class="fa fa-map-marker-alt text-brand me-2" aria-hidden="true"></i>
+                            <span id="tour-location-side">@Model.TourLocation</span>
+                        </p>
+
+                        <p class="mb-2">
+                            <i class="fa fa-calendar-alt text-brand me-2" aria-hidden="true"></i>
+                            <span id="tour-duration-side">@TourFormat.Days(Model.TourDay)</span>
+                        </p>
+
+                        <p class="mb-2">
+                            <i class="fa fa-user text-brand me-2" aria-hidden="true"></i>
+                            <span id="tour-person-side">@TourFormat.Persons(Model.TourPerson)</span>
+                        </p>
+
+                        <p class="mb-0">
+                            <i class="fa fa-tag text-brand me-2" aria-hidden="true"></i>
+                            <span id="tour-price-side">@TourFormat.Price(Model.HowMuchMoney)</span>
+                        </p>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+
+    
+    <div class="container-fluid testimonial py-5">
+        <div class="container pt-0 pb-5">
+
+            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                <p class="section-title px-3">Testimonial</p>
+
+                <h2 class="mb-4">Travelers Comments</h2>
+
+                <p class="mb-4">
+                    Share your travel experience about this tour and help other visitors learn more before booking.
+                </p>
+
+                <a id="comment-button"
+                       asp-controller="Home"
+                       asp-action="CreateTestimonial"
+                       asp-route-tourItemId="@Model.Id"
+                       class="btn btn-primary rounded-pill py-3 px-5">
+                    Make a Comment
+                </a>
+            </div>
+
+            @{
+                var testimonialItems = Model.TourTestimonialItems ?? new List<KJ.Tourify.WebUI.Models.Entities.TourTestimonialItem>();
+            }
+
+            <div class="testimonial-carousel owl-carousel">
+
+                @foreach (var item in testimonialItems)
+                {
+                    var profileImagePath = ImagePath.Resolve(item.ProfileImageUrl, ImagePath.AvatarPlaceholder);
+
+                    <div class="testimonial-item text-center rounded pb-4">
+                        <div class="testimonial-comment bg-soft rounded p-4">
+                            <p class="text-center mb-5">
+                                @item.Description
+                            </p>
+                        </div>
+
+                        <div class="testimonial-img p-1">
+                            <img src="@Url.Content(profileImagePath)"
+                                 class="img-fluid rounded-circle"
+                                 alt="Photo of @item.FullName" width="100" height="100" loading="lazy">
+                        </div>
+
+                        <div class="testimonial-author">
+                            <h5 class="mb-0">@item.FullName</h5>
+                            <p class="mb-0">@item.Address</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+

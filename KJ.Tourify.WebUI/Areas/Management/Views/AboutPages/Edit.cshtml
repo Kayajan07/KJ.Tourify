@@ -1,0 +1,71 @@
+﻿@using KJ.Tourify.WebUI.Models.Entities
+@model AboutPage
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Hakkımızda Düzenle</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Geri</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" style="color: red;"></div>
+
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.AboutImageUrl)
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="AboutHeader"></label>
+                <input type="text" class="form-control" asp-for="AboutHeader">
+                    <span asp-validation-for="AboutHeader" style="color: red;"></span>
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="AboutUpperTitle"></label>
+                    <input type="text" class="form-control" asp-for="AboutUpperTitle">
+                        <span asp-validation-for="AboutUpperTitle" style="color: red;"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="form-label" asp-for="AboutTitle"></label>
+                        <input type="text" class="form-control" asp-for="AboutTitle">
+                            <span asp-validation-for="AboutTitle" style="color: red;"></span>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="form-label" asp-for="AboutDescription"></label>
+                            <textarea class="form-control" asp-for="AboutDescription"></textarea>
+                            <span asp-validation-for="AboutDescription" style="color: red;"></span>
+                        </div>
+
+                        <div class="mb-6">
+                            <img src="@Model.AboutImageUrl" width="75" />
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="form-label" asp-for="AboutImageUrl"></label>
+                            <input type="file" class="form-control" name="AboutImageUrl">
+                            <span asp-validation-for="AboutImageUrl" style="color: red;"></span>
+                        </div>
+                        <div class="mb-6">
+                            <label class="form-label" asp-for="AboutGuideTitle"></label>
+                            <input type="text" class="form-control" asp-for="AboutGuideTitle">
+                                <span asp-validation-for="AboutGuideTitle" style="color: red;"></span>
+                            </div>
+                            <div class="mb-6">
+                                <label class="form-label" asp-for="AboutGuideDescription"></label>
+                                <input type="text" class="form-control" asp-for="AboutGuideDescription">
+                                    <span asp-validation-for="AboutGuideDescription" style="color: red;"></span>
+                                </div>
+                                <div class="mb-6">
+                                    <label class="form-label" asp-for="AboutGuideButtonText"></label>
+                                    <input type="text" class="form-control" asp-for="AboutGuideButtonText">
+                                        <span asp-validation-for="AboutGuideButtonText" style="color: red;"></span>
+                                    </div>
+                            
+
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+            </div>

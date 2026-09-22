@@ -1,0 +1,20 @@
+@model PageHeaderViewModel
+@{
+    var headerImage = ViewData["HeaderImage"] as string;
+    var style = string.IsNullOrEmpty(headerImage) ? null : $"--header-image: url('{Url.Content(headerImage)}')";
+}
+<div class="container-fluid bg-breadcrumb page-header" style="@style">
+    <div class="container text-center py-5 page-header-inner">
+        <h1 class="page-header-title">@Model.Title</h1>
+        @if (!string.IsNullOrEmpty(Model.ParentTitle))
+        {
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="@Model.ParentAction">@Model.ParentTitle</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+                </ol>
+            </nav>
+        }
+    </div>
+</div>
