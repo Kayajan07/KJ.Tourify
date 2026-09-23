@@ -46,36 +46,37 @@
 
         private static string FileNameControl(string filename)
         {
-            filename.Replace("ş", "s");
-            filename.Replace("ç", "c");
-            filename.Replace("ü", "u");
-            filename.Replace("ğ", "g");
-            filename.Replace("ı", "i");
-            filename.Replace("ö", "o");
-            filename.Replace("Ş", "S");
-            filename.Replace("Ç", "C");
-            filename.Replace("Ü", "U");
-            filename.Replace("Ğ", "G");
-            filename.Replace("İ", "I");
-            filename.Replace("Ö", "O");
-            filename.Replace("-", "");
-            filename.Replace("_", "");
-            filename.Replace("?", "");
-            filename.Replace("!", "");
-            filename.Replace("#", "");
-            filename.Replace("*", "");
-            filename.Replace("/", "");
-            filename.Replace("&", "");
-            filename.Replace("%", "");
-            filename.Replace("$", "");
-            filename.Replace("^", "");
-            filename.Replace("{", "");
-            filename.Replace("}", "");
-            filename.Replace("[", "");
-            filename.Replace("]", "");
-            filename.Replace(")", "");
-            filename.Replace("(", "");
-            filename.Replace(":", "");
+            filename = filename.Replace("ş", "s");
+            filename = filename.Replace("ç", "c");
+            filename = filename.Replace("ü", "u");
+            filename = filename.Replace("ğ", "g");
+            filename = filename.Replace("ı", "i");
+            filename = filename.Replace("ö", "o");
+            filename = filename.Replace("Ş", "S");
+            filename = filename.Replace("Ç", "C");
+            filename = filename.Replace("Ü", "U");
+            filename = filename.Replace("Ğ", "G");
+            filename = filename.Replace("İ", "I");
+            filename = filename.Replace("Ö", "O");
+            filename = filename.Replace("-", "");
+            filename = filename.Replace("_", "");
+            filename = filename.Replace("?", "");
+            filename = filename.Replace("!", "");
+            filename = filename.Replace("#", "");
+            filename = filename.Replace("*", "");
+            filename = filename.Replace("/", "");
+            filename = filename.Replace("&", "");
+            filename = filename.Replace("%", "");
+            filename = filename.Replace("$", "");
+            filename = filename.Replace("^", "");
+            filename = filename.Replace("{", "");
+            filename = filename.Replace("}", "");
+            filename = filename.Replace("[", "");
+            filename = filename.Replace("]", "");
+            filename = filename.Replace(")", "");
+            filename = filename.Replace("(", "");
+            filename = filename.Replace(":", "");
+            filename = filename.Replace(" ", "");
 
             return filename;
         }

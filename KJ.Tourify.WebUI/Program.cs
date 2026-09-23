@@ -36,6 +36,11 @@ namespace KJ.Tourify.WebUI
             }
 
             app.UseHttpsRedirection();
+
+            // MapStaticAssets sadece build/publish anında var olan dosyaları sunar;
+            // sonradan yüklenen dosyalar (wwwroot/uploads) için UseStaticFiles gerekli.
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseAuthorization();
